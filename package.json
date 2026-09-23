@@ -1,0 +1,13 @@
+{
+  "name": "mateus-pala-cubbi-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@12.3.4",
+  "description": "Site estático (HTML/CSS/JS) com conteúdo editável via Decap CMS, feito para hospedagem no Netlify.",
+  "scripts": {
+    "dev": "serve -l 3000 ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}

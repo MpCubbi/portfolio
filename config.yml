@@ -1,0 +1,114 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Exigido pelo Decap mesmo sem uploads de imagem neste site.
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+publish_mode: simple
+
+locale: "pt"
+
+collections:
+  - name: "site"
+    label: "Site"
+    files:
+      - name: "conteudo"
+        label: "Conteúdo do site"
+        file: "content/site.json"
+        fields:
+          - label: "Marca (canto superior esquerdo)"
+            name: "marca"
+            widget: "object"
+            fields:
+              - { label: "Nome exibido", name: "nomeTexto", widget: "string" }
+              - { label: "Texto ao clicar em \"conhecimentos ↗\"", name: "textoModoConhecimentos", widget: "string" }
+
+          - label: "Topo (frase e menu)"
+            name: "topo"
+            widget: "object"
+            fields:
+              - { label: "Frase no papel", name: "frase", widget: "string" }
+              - label: "Botões do menu (sumário)"
+                name: "sumario"
+                widget: "list"
+                fields:
+                  - { label: "Texto do botão", name: "texto", widget: "string" }
+                  - label: "Ir para a seção"
+                    name: "destino"
+                    widget: "select"
+                    options: ["sobre", "entregas", "contato"]
+              - { label: "Texto do botão \"conhecimentos\"", name: "botaoConhecimentos", widget: "string" }
+
+          - label: "Seção: Sobre mim"
+            name: "sobre"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "titulo", widget: "string" }
+              - label: "Parágrafos"
+                name: "paragrafos"
+                widget: "list"
+                field: { label: "Parágrafo", name: "paragrafo", widget: "text" }
+
+          - { label: "Frase de impacto 1 (depois de \"Sobre mim\")", name: "fraseImpacto1", widget: "text" }
+
+          - label: "Seção: Meu Caderno"
+            name: "caderno"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Texto de instrução (embaixo do caderno)", name: "instrucao", widget: "string" }
+              - label: "Atividades (páginas do caderno)"
+                name: "atividades"
+                widget: "list"
+                summary: "{{fields.titulo}}"
+                fields:
+                  - { label: "Título da atividade", name: "titulo", widget: "string" }
+                  - { label: "Resumo da atividade", name: "resumo", widget: "text" }
+                  - { label: "O que aprendi", name: "aprendizado", widget: "text" }
+                  - { label: "Texto do link", name: "linkTexto", widget: "string", default: "Não disponível" }
+                  - { label: "Link está disponível?", name: "disponivel", widget: "boolean", default: false }
+                  - { label: "URL do link (só se disponível)", name: "linkHref", widget: "string", required: false, default: "" }
+
+          - { label: "Frase de impacto 2 (depois do Caderno)", name: "fraseImpacto2", widget: "text" }
+
+          - label: "Rodapé / Contato"
+            name: "contato"
+            widget: "object"
+            fields:
+              - { label: "URL do GitHub", name: "githubUrl", widget: "string" }
+              - { label: "Texto do botão GitHub", name: "githubTexto", widget: "string", default: "GitHub" }
+              - { label: "E-mail", name: "email", widget: "string" }
+              - { label: "Texto do botão de copiar e-mail", name: "emailBotaoTexto", widget: "string", default: "Copiar e-mail" }
+              - { label: "Texto antes dos links de fallback", name: "fallbackPrefixo", widget: "string", default: "Prefere direto?" }
+
+          - label: "Seção: Conhecimentos"
+            name: "conhecimentos"
+            widget: "object"
+            fields:
+              - { label: "Rótulo de status", name: "status", widget: "string" }
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Texto de introdução", name: "intro", widget: "text" }
+              - label: "Etiquetas de contexto"
+                name: "caminho"
+                widget: "list"
+                field: { label: "Etiqueta", name: "etiqueta", widget: "string" }
+              - { label: "Título da nota \"Como ler\"", name: "notaTitulo", widget: "string" }
+              - { label: "Texto da nota \"Como ler\"", name: "notaTexto", widget: "text" }
+              - label: "Itens de conhecimento"
+                name: "itens"
+                widget: "list"
+                summary: "{{fields.nome}}"
+                fields:
+                  - label: "Ícone"
+                    name: "icone"
+                    widget: "select"
+                    options: ["excel", "powerpoint", "canva", "word", "vscode", "vm", "padrao"]
+                    default: "padrao"
+                  - { label: "Nome", name: "nome", widget: "string" }
+                  - { label: "Status", name: "status", widget: "string" }
+                  - { label: "Descrição", name: "descricao", widget: "text" }
+                  - { label: "Nível (0 a 100)", name: "nivel", widget: "number", value_type: "int", min: 0, max: 100, default: 20 }
+              - { label: "Título de \"próximo passo\"", name: "proximoPassoTitulo", widget: "string" }
+              - { label: "Texto de \"próximo passo\"", name: "proximoPassoTexto", widget: "text" }

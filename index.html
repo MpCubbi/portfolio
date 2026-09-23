@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mateus Pala Cubbi</title>
+<meta name="description" content="Portfólio de Mateus Pala Cubbi, estudante de Informática para a Internet com foco em cibersegurança.">
+<style>
+  /* Tipografia: texto legível, títulos com energia de pôster e detalhes
+     monoespaçados para preservar a identidade de terminal. */
+  @import url('https://fonts.googleapis.com/css2?family=Bangers&family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+  :root{
+    --azul-topo-1: #06073a;
+    --azul-topo-2: #0b0d52;
+    --branco: #ffffff;
+    --verde-nome: #79eea0;
+    --bg-pagina: #15161d;
+    --bg-painel: #1d202b;
+    --texto: #f3f5f9;
+    --texto-dim: #aab0c2;
+    --papel: #fdf9ec;
+    --papel-linha: #e6dfc7;
+    --papel-texto: #2c2a1c;
+    --azul-noite: #12143f;
+    --amarelo: #f4d35e;
+    --sombra-forte: rgba(0,0,0,0.65);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 17px;
+    letter-spacing: 0.01em;
+    background: var(--bg-pagina);
+    color: var(--texto);
+    line-height: 1.55;
+    transition: background 0.5s ease;
+    overflow-x: hidden;
+  }
+
+  a{ color: inherit; }
+  img, svg{ max-width:100%; display:block; }
+
+  a:focus-visible, button:focus-visible{
+    outline: 3px solid var(--verde-nome);
+    outline-offset: 3px;
+  }
+
+  /* =========================================================
+     TOPO
+     ========================================================= */
+  header.topo{
+    background: linear-gradient(180deg, var(--azul-topo-1), var(--azul-topo-2));
+    padding: 2.2rem 6vw 3.2rem;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .marca{
+    font-family: 'DM Mono', ui-monospace, monospace;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: inherit;
+    font-size: clamp(1.7rem, 4.8vw, 3.3rem);
+    font-weight: 400;
+    white-space: nowrap;
+    display:flex;
+    align-items: baseline;
+  }
+
+  .marca .colchete{ color: var(--branco); }
+  .marca .nome-texto{
+    color: var(--verde-nome);
+    text-shadow: 0 0 10px rgba(121,238,160,0.55), 0 0 2px rgba(121,238,160,0.85);
+    min-width: 1ch;
+  }
+
+  .cursor-piscando{
+    display:inline-block;
+    width: 0.5ch;
+    height: 0.9em;
+    margin-left: 0.18em;
+    background: var(--branco);
+    animation: piscar 1.05s steps(1) infinite;
+    transform: translateY(0.06em);
+  }
+
+  @keyframes piscar{
+    0%, 49%{ opacity: 1; }
+    50%, 100%{ opacity: 0; }
+  }
+
+  .topo-direita{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    max-width: 440px;
+    width: 100%;
+    transition: opacity 0.4s ease;
+  }
+
+  /* ---------- tiras de papel de caderno (frase + botões) ---------- */
+  .papel-tira{
+    background: var(--papel);
+    color: var(--papel-texto);
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.86rem;
+    font-weight: 500;
+    padding: 0.6rem 1.1rem;
+    border-radius: 2px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.4);
+    background-image: repeating-linear-gradient(
+        var(--papel-linha) 0px, var(--papel-linha) 1px,
+        transparent 1px, transparent 24px
+      );
+    position: relative;
+    border: none;
+    cursor: default;
+  }
+
+  .papel-tira::before{
+    content:"";
+    position:absolute;
+    top:-9px; left: 18px;
+    width: 46px; height: 16px;
+    background: rgba(255,255,255,0.55);
+    transform: rotate(-4deg);
+  }
+
+  .frase-topo{
+    text-align: left;
+    max-width: 340px;
+    transform: rotate(-2.2deg);
+    animation: balancar 6.5s ease-in-out infinite;
+  }
+
+  @keyframes balancar{
+    0%   { transform: rotate(-2.2deg); }
+    50%  { transform: rotate(1.6deg); }
+    100% { transform: rotate(-2.2deg); }
+  }
+
+  .sumario{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    justify-content: flex-end;
+  }
+
+  .sumario button.papel-tira{
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .sumario button:nth-child(1){ transform: rotate(-3deg); }
+  .sumario button:nth-child(2){ transform: rotate(2deg); }
+  .sumario button:nth-child(3){ transform: rotate(-1.4deg); }
+
+  .sumario .papel-tira:hover,
+  .sumario .papel-tira:focus-visible{
+    transform: rotate(0deg) translateY(-3px);
+    box-shadow: 0 12px 22px rgba(0,0,0,0.5);
+  }
+
+  .sumario .botao-conhecimentos{
+    color: var(--azul-topo-2);
+    border: 2px solid var(--verde-nome);
+    font-weight: 600;
+    box-shadow: 0 6px 14px rgba(121,238,160,0.18);
+  }
+
+  /* =========================================================
+     CAMADA DE CONTEÚDO — flutua acima do topo/rodapé, projetando sombra
+     ========================================================= */
+  main{
+    position: relative;
+    z-index: 2;
+    background: var(--bg-pagina);
+    margin: -28px 0;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    border-radius: 22px;
+    box-shadow: 0 -20px 34px var(--sombra-forte), 0 20px 34px var(--sombra-forte);
+    transition: opacity 0.4s ease;
+  }
+
+  footer{ position: relative; z-index: 1; }
+
+  main section{
+    padding: 4rem 6vw;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  h2{
+    font-family: 'Bangers', cursive;
+    letter-spacing: 0.055em;
+    font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+    color: var(--verde-nome);
+    margin: 0 0 1.8rem;
+    font-weight: 400;
+  }
+
+  .frase-impacto{
+    padding: 2.4rem 6vw;
+    text-align: center;
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: clamp(0.92rem, 2vw, 1.25rem);
+    line-height: 1.5;
+    color: var(--amarelo);
+    background: var(--bg-painel);
+  }
+
+  /* ---------- Sobre mim ---------- */
+  #sobre p{
+    max-width: 68ch;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--texto-dim);
+    margin-bottom: 1.3rem;
+  }
+  #sobre p:first-of-type::first-letter{
+    color: var(--verde-nome);
+    font-weight: 700;
+    font-size: 1.35em;
+  }
+
+  /* =========================================================
+     CADERNO DE ATIVIDADES — uma página direita por vez
+     ========================================================= */
+  .secao-caderno{
+    position: relative;
+    min-height: 545px;
+    margin-top: 1rem;
+  }
+
+  .caderno-wrap{
+    width: min(780px, 100%);
+    margin: 0 auto;
+  }
+
+  .caderno{
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    min-height: 455px;
+    transform: rotate(-0.35deg);
+    filter: drop-shadow(0 18px 20px rgba(0,0,0,0.28));
+  }
+
+  .caderno-espiral{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 1.2rem 0.45rem;
+    background: linear-gradient(90deg, #10122e, #25285a 65%, #10122e);
+    border: 2px solid rgba(121,238,160,0.48);
+    border-right: 0;
+    border-radius: 15px 0 0 15px;
+  }
+
+  .espiral{
+    width: 26px;
+    height: 13px;
+    flex: 0 0 auto;
+    border: 3px solid #b9c1d4;
+    border-left-color: #59617d;
+    border-radius: 50%;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.35);
+  }
+
+  .caderno-pagina{
+    position: relative;
+    min-height: 455px;
+    padding: clamp(1.5rem, 4vw, 2.6rem) clamp(1.35rem, 5vw, 3.5rem) 1.7rem;
+    overflow: hidden;
+    color: var(--papel-texto);
+    border: 2px solid #e4dec8;
+    border-radius: 0 15px 15px 0;
+    background-color: #fffef8;
+    background-image:
+      linear-gradient(90deg, transparent 0, transparent 4.5rem, rgba(217,94,94,0.33) 4.5rem, rgba(217,94,94,0.33) 4.6rem, transparent 4.6rem),
+      repeating-linear-gradient(180deg, transparent 0, transparent 31px, rgba(103,154,194,0.28) 31px, rgba(103,154,194,0.28) 32px);
+    box-shadow: inset 10px 0 0 rgba(35,37,83,0.08);
+  }
+
+  .caderno-pagina::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(110deg, rgba(255,255,255,0.38), transparent 25%, transparent 78%, rgba(119,99,46,0.05));
+  }
+
+  .pagina-atividade{
+    position: relative;
+    z-index: 1;
+    display: none;
+    min-height: 395px;
+    padding-left: 1.4rem;
+    animation: virar-pagina 0.38s ease both;
+  }
+  .pagina-atividade.ativa{ display: block; }
+
+  @keyframes virar-pagina{
+    from{ opacity: 0; transform: translateX(14px); }
+    to{ opacity: 1; transform: translateX(0); }
+  }
+
+  .pagina-cabecalho{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: #59617d;
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .pagina-etiqueta{ color: #b34e58; font-weight: 500; }
+
+  .pagina-atividade h3{
+    max-width: 17ch;
+    margin: 0 0 1.1rem;
+    color: var(--azul-topo-2);
+    font-family: 'Bangers', cursive;
+    font-size: clamp(1.9rem, 5vw, 3rem);
+    font-weight: 400;
+    letter-spacing: 0.045em;
+    line-height: 1;
+  }
+
+  .pagina-bloco{
+    max-width: 62ch;
+    margin: 0 0 0.9rem;
+    padding: 0.65rem 0.9rem;
+    border-left: 3px solid var(--verde-nome);
+    background: rgba(255,255,255,0.48);
+  }
+
+  .pagina-bloco h4{
+    margin: 0 0 0.18rem;
+    color: var(--azul-topo-2);
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .pagina-bloco p{
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .pagina-link{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.35rem;
+    padding: 0.55rem 0.85rem;
+    color: var(--azul-topo-2);
+    border: 1px dashed rgba(18,20,63,0.42);
+    border-radius: 7px;
+    background: rgba(255,255,255,0.62);
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.75rem;
+    text-decoration: none;
+  }
+  .pagina-link:not(.indisponivel):hover{ background: #fff; transform: translateY(-2px); }
+  .pagina-link.indisponivel{ opacity: 0.62; cursor: default; }
+
+  .navegacao-caderno{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1rem 0 0;
+  }
+
+  .navegacao-caderno button,
+  .marcador-pagina{
+    border: 1px solid rgba(121,238,160,0.5);
+    border-radius: 999px;
+    background: var(--azul-noite);
+    color: var(--branco);
+    cursor: pointer;
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.74rem;
+  }
+
+  .navegacao-caderno button{
+    padding: 0.55rem 0.85rem;
+  }
+  .navegacao-caderno button:disabled{
+    cursor: not-allowed;
+    opacity: 0.35;
+  }
+  .navegacao-caderno button:not(:disabled):hover,
+  .marcador-pagina:hover{
+    background: #1c1f60;
+    transform: translateY(-2px);
+  }
+
+  .marcadores-pagina{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.42rem;
+  }
+  .marcador-pagina{
+    width: 28px;
+    height: 28px;
+    padding: 0;
+  }
+  .marcador-pagina.ativo{
+    color: var(--azul-topo-2);
+    border-color: var(--amarelo);
+    background: var(--amarelo);
+  }
+
+  .instrucao-caderno{
+    margin: 0.9rem auto 0;
+    max-width: 60ch;
+    color: var(--texto-dim);
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.74rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  @media (max-width: 620px){
+    .secao-caderno{ min-height: 660px; }
+    .caderno{ grid-template-columns: 28px minmax(0, 1fr); min-height: 555px; }
+    .caderno-espiral{ padding: 0.8rem 0.15rem; }
+    .espiral{ width: 20px; height: 11px; border-width: 2px; }
+    .caderno-pagina{ min-height: 555px; padding: 1.3rem 1rem 1.1rem 1.25rem; }
+    .pagina-atividade{ min-height: 500px; padding-left: 0.85rem; }
+    .pagina-cabecalho{ flex-direction: column; gap: 0.15rem; margin-bottom: 0.8rem; }
+    .pagina-atividade h3{ font-size: 2rem; }
+    .pagina-bloco{ padding: 0.55rem 0.7rem; }
+    .pagina-bloco p{ font-size: 0.86rem; }
+    .navegacao-caderno{ flex-wrap: wrap; justify-content: center; }
+    .navegacao-caderno > button{ order: 2; }
+    .marcadores-pagina{ order: 1; width: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .pagina-atividade{ animation: none; }
+  }
+
+  /* =========================================================
+     RODAPÉ
+     ========================================================= */
+  footer{
+    background: linear-gradient(0deg, var(--azul-topo-1), var(--azul-topo-2));
+    color: var(--branco);
+    padding: 0 6vw 2.2rem;
+    transition: opacity 0.4s ease;
+  }
+
+  .cena-rodape{
+    display:flex;
+    flex-wrap: wrap;
+    align-items:center;
+    justify-content:center;
+    gap: 1.2rem;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 3.8rem 0 1.2rem;
+  }
+
+  .botao-contato{
+    display:flex;
+    align-items:center;
+    gap: 0.65rem;
+    background: var(--papel);
+    color: var(--azul-topo-2);
+    border: 3px solid rgba(255,255,255,0.85);
+    border-radius: 999px;
+    padding: 0.65rem 1.4rem;
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    opacity: 0;
+    transform: translateY(24px);
+    animation: subir 0.5s ease-out forwards;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .botao-contato:nth-child(2){ animation-delay: 0.12s; }
+  .botao-contato:hover,
+  .botao-contato:focus-visible{
+    transform: translateY(-4px);
+    box-shadow: 0 16px 26px rgba(0,0,0,0.5);
+  }
+  @keyframes subir{
+    to{ opacity: 1; transform: translateY(0); }
+  }
+
+  .botao-contato svg{ width: 24px; height: 24px; flex-shrink: 0; }
+
+  .email-arroba{
+    width: 24px; height: 24px;
+    display:flex; align-items:center; justify-content:center;
+    font-size: 1.3rem; font-weight: 700;
+    border-radius: 50%;
+    background: var(--azul-topo-2);
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .toast-copiado{
+    position: fixed;
+    left: 50%; bottom: 28px;
+    transform: translate(-50%, 16px);
+    background: var(--azul-noite);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 10px;
+    padding: 0.6rem 1.1rem;
+    font-size: 1.1rem;
+    font-family: 'DM Mono', ui-monospace, monospace;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 80;
+  }
+  .toast-copiado.ativo{
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  .rodape-fallback{
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    padding-bottom: 0.6rem;
+  }
+  .rodape-fallback a{ text-decoration: underline; }
+
+  /* =========================================================
+     MODO "CONHECIMENTOS" — diário de aprendizagem
+     ========================================================= */
+  body.modo-conhecimentos{
+    background:
+      radial-gradient(circle at 12% 10%, rgba(121,238,160,0.13), transparent 28rem),
+      var(--azul-topo-2);
+  }
+
+  body.modo-conhecimentos main,
+  body.modo-conhecimentos footer,
+  body.modo-conhecimentos .topo-direita{
+    opacity: 0;
+    pointer-events: none;
+  }
+  body.modo-conhecimentos main.oculto,
+  body.modo-conhecimentos footer.oculto{ display: none; }
+
+  #conhecimentos{
+    display: none;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1.5rem 6vw 5rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  #conhecimentos.visivel{ display: block; }
+  #conhecimentos.mostrar{ opacity: 1; }
+
+  .conhecimentos-cabecalho{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 1rem 2rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .conhecimentos-cabecalho h2{
+    grid-column: 1 / -1;
+    margin: 0;
+    color: var(--branco);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+  }
+
+  .conhecimentos-status{
+    grid-column: 1 / -1;
+    margin: 0 0 -0.55rem;
+    color: var(--amarelo);
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .conhecimentos-intro{
+    max-width: 64ch;
+    margin: 0;
+    color: rgba(255,255,255,0.78);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .conhecimentos-caminho{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.45rem;
+  }
+
+  .conhecimentos-caminho span,
+  .status-conhecimento{
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 0.36rem 0.6rem;
+    border: 1px solid rgba(121,238,160,0.5);
+    border-radius: 999px;
+    color: var(--verde-nome);
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .nota-conhecimentos{
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin: 0 0 1.3rem;
+    padding: 0.85rem 1rem;
+    border-left: 3px solid var(--amarelo);
+    color: rgba(255,255,255,0.78);
+    background: rgba(6,7,58,0.34);
+    font-size: 0.86rem;
+    line-height: 1.55;
+  }
+  .nota-conhecimentos strong{
+    flex: 0 0 auto;
+    color: var(--amarelo);
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+  }
+  .nota-conhecimentos p{ margin: 0; }
+
+  .lista-conhecimentos{
+    list-style: none;
+    margin: 0; padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+  }
+
+  .lista-conhecimentos li{
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    align-items: start;
+    gap: 0.8rem;
+    min-height: 165px;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 14px;
+    background: linear-gradient(145deg, rgba(29,32,75,0.92), rgba(10,12,54,0.82));
+    box-shadow: 0 10px 20px rgba(0,0,0,0.16);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .lista-conhecimentos li:hover,
+  .lista-conhecimentos li:focus-within{
+    transform: translateY(-3px);
+    border-color: rgba(121,238,160,0.55);
+    background: linear-gradient(145deg, rgba(39,53,92,0.96), rgba(10,12,54,0.9));
+  }
+
+  .icone-conhecimento{
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(244,211,94,0.48);
+    border-radius: 11px;
+    background: rgba(244,211,94,0.08);
+  }
+  .icone-conhecimento svg{ width:100%; height:100%; }
+
+  .nome-conhecimento{
+    display: block;
+    margin-bottom: 0.22rem;
+    color: var(--branco);
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .descricao-conhecimento{
+    min-height: 2.8em;
+    margin: 0 0 0.65rem;
+    color: rgba(255,255,255,0.66);
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  .barra-nivel{
+    display: block;
+    width: 100%;
+    height: 7px;
+    background: rgba(244,211,94,0.18);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .barra-preenchida{
+    display:block;
+    height:100%;
+    width: var(--nivel, 22%);
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--amarelo), #f2a95b);
+    transition: width 0.5s ease;
+  }
+
+  .legenda-nivel{
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 0.32rem;
+    color: rgba(255,255,255,0.48);
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.62rem;
+  }
+
+  .proximo-passo{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.8rem;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 0.9rem 1rem;
+    border: 1px dashed rgba(121,238,160,0.42);
+    border-radius: 12px;
+    color: rgba(255,255,255,0.78);
+    background: rgba(121,238,160,0.07);
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+  .proximo-passo strong{
+    color: var(--verde-nome);
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+  }
+
+  /* =========================================================
+     RESPONSIVO GERAL
+     ========================================================= */
+  @media (max-width: 720px){
+    header.topo{ flex-direction: column; align-items: flex-start; padding: 1.8rem 6vw 2.4rem; }
+    .topo-direita{ align-items: flex-start; max-width: 100%; }
+    .frase-topo{ align-self: flex-start; }
+    .sumario{ justify-content: flex-start; }
+    main section{ padding: 3rem 6vw; }
+  }
+
+  @media (max-width: 720px){
+    #conhecimentos{ padding: 1rem 6vw 4rem; }
+    .conhecimentos-cabecalho{
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .conhecimentos-cabecalho h2{ margin-bottom: 0.75rem; }
+    .conhecimentos-caminho{
+      justify-content: flex-start;
+      margin-top: 0.8rem;
+    }
+    .nota-conhecimentos{
+      display: block;
+    }
+    .nota-conhecimentos strong{
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .lista-conhecimentos{ grid-template-columns: 1fr; }
+    .lista-conhecimentos li{ min-height: 145px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .frase-topo, .cursor-piscando, .pagina-atividade, .botao-contato{ animation: none !important; }
+    .botao-contato{ opacity: 1; transform: none; }
+    html{ scroll-behavior: auto; }
+  }
+
+  .carregando{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height: 60vh;
+    color: var(--texto-dim);
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.85rem;
+  }
+  .carregando[hidden]{ display: none; }
+</style>
+</head>
+<body>
+
+<div id="carregandoTela" class="carregando">carregando conteúdo…</div>
+
+<div id="app" hidden>
+
+<header class="topo">
+  <button type="button" class="marca" id="marcaTopo" aria-label="Mostrar meus conhecimentos">
+    <span class="colchete">&lt;/</span><span class="nome-texto" id="nomeTextoTopo"></span><span class="colchete">&gt;</span><span class="cursor-piscando" aria-hidden="true"></span>
+  </button>
+
+  <div class="topo-direita">
+    <p class="papel-tira frase-topo" id="fraseTopo"></p>
+
+    <nav class="sumario" aria-label="Sumário do site" id="sumario">
+      <button type="button" class="papel-tira botao-conhecimentos" id="botaoConhecimentos" aria-label="Abrir meus conhecimentos" aria-expanded="false"></button>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudoPrincipal">
+
+  <section id="sobre">
+    <h2 id="sobreTitulo"></h2>
+    <div id="sobreParagrafos"></div>
+  </section>
+
+  <p class="frase-impacto" id="fraseImpacto1"></p>
+
+  <section id="entregas">
+    <h2 id="cadernoTitulo"></h2>
+    <div class="secao-caderno" id="zonaCaderno">
+      <div class="caderno-wrap">
+        <div class="caderno" id="caderno" tabindex="0" aria-label="Caderno de atividades">
+          <div class="caderno-espiral" aria-hidden="true">
+            <span class="espiral"></span><span class="espiral"></span><span class="espiral"></span>
+            <span class="espiral"></span><span class="espiral"></span><span class="espiral"></span>
+            <span class="espiral"></span><span class="espiral"></span><span class="espiral"></span>
+          </div>
+          <div class="caderno-pagina" id="cadernoPagina"></div>
+        </div>
+
+        <div class="navegacao-caderno" aria-label="Navegação pelas atividades">
+          <button type="button" id="paginaAnterior" aria-label="Ver atividade anterior">← anterior</button>
+          <div class="marcadores-pagina" id="marcadoresPagina"></div>
+          <button type="button" id="proximaPagina" aria-label="Ver próxima atividade">próxima →</button>
+        </div>
+      </div>
+      <p class="instrucao-caderno" id="instrucaoCaderno"></p>
+    </div>
+  </section>
+
+  <p class="frase-impacto" id="fraseImpacto2"></p>
+
+</main>
+
+<footer id="contato">
+  <div class="cena-rodape" id="cenaRodape"></div>
+
+  <p class="rodape-fallback" id="rodapeFallback"></p>
+</footer>
+
+<p class="toast-copiado" id="toastCopiado" role="status" aria-live="polite"></p>
+
+<section id="conhecimentos" aria-label="Meus conhecimentos">
+  <div class="conhecimentos-cabecalho">
+    <p class="conhecimentos-status" id="conhecimentosStatus"></p>
+    <h2 id="conhecimentosTitulo"></h2>
+    <p class="conhecimentos-intro" id="conhecimentosIntro"></p>
+    <div class="conhecimentos-caminho" id="conhecimentosCaminho" aria-label="Contexto atual"></div>
+  </div>
+
+  <div class="nota-conhecimentos">
+    <strong id="notaTitulo"></strong>
+    <p id="notaTexto"></p>
+  </div>
+
+  <ul class="lista-conhecimentos" id="listaConhecimentos"></ul>
+
+  <div class="proximo-passo">
+    <strong id="proximoPassoTitulo"></strong>
+    <span id="proximoPassoTexto"></span>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var ICONES = {
+    excel: '<svg viewBox="0 0 40 40" fill="none" stroke="#f4d35e" stroke-width="2.5"><rect x="6" y="6" width="28" height="28" rx="3"/><path d="M6 16 H34"/><path d="M6 26 H34"/><path d="M17 6 V34"/></svg>',
+    powerpoint: '<svg viewBox="0 0 40 40" fill="none" stroke="#f4d35e" stroke-width="2.5"><rect x="4" y="8" width="26" height="20" rx="2"/><path d="M12 32 H26"/><path d="M30 14 L36 10 V26 L30 22 Z"/></svg>',
+    canva: '<svg viewBox="0 0 40 40" fill="none" stroke="#f4d35e" stroke-width="2.5"><circle cx="16" cy="16" r="9"/><circle cx="26" cy="24" r="6"/><circle cx="14" cy="30" r="4"/></svg>',
+    word: '<svg viewBox="0 0 40 40" fill="none" stroke="#f4d35e" stroke-width="2.5"><rect x="8" y="4" width="24" height="32" rx="2"/><path d="M14 14 H26"/><path d="M14 20 H26"/><path d="M14 26 H22"/></svg>',
+    vscode: '<svg viewBox="0 0 40 40" fill="none" stroke="#f4d35e" stroke-width="2.5"><path d="M14 10 L4 20 L14 30"/><path d="M26 10 L36 20 L26 30"/></svg>',
+    vm: '<svg viewBox="0 0 40 40" fill="none" stroke="#f4d35e" stroke-width="2.5"><rect x="6" y="8" width="28" height="10" rx="2"/><rect x="6" y="22" width="28" height="10" rx="2"/><circle cx="12" cy="13" r="1.5" fill="#f4d35e"/><circle cx="12" cy="27" r="1.5" fill="#f4d35e"/></svg>',
+    padrao: '<svg viewBox="0 0 40 40" fill="none" stroke="#f4d35e" stroke-width="2.5"><rect x="6" y="6" width="28" height="28" rx="4"/><path d="M15 15 L11 20 L15 25"/><path d="M25 15 L29 20 L25 25"/></svg>'
+  };
+
+  var ICONE_GITHUB = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>';
+
+  function el(tag, className, texto){
+    var node = document.createElement(tag);
+    if(className) node.className = className;
+    if(texto !== undefined) node.textContent = texto;
+    return node;
+  }
+
+  fetch('content/site.json', { cache: 'no-store' })
+    .then(function(resposta){ return resposta.json(); })
+    .then(iniciar)
+    .catch(function(erro){
+      document.getElementById('carregandoTela').textContent = 'Não foi possível carregar o conteúdo do site.';
+      console.error('[site] Falha ao carregar content/site.json', erro);
+    });
+
+  function iniciar(dados){
+    document.title = 'Mateus Pala Cubbi';
+
+    var nomeOriginal = (dados.marca && dados.marca.nomeTexto) || '';
+    document.getElementById('nomeTextoTopo').textContent = nomeOriginal;
+    document.getElementById('fraseTopo').textContent = (dados.topo && dados.topo.frase) || '';
+
+    var sumario = document.getElementById('sumario');
+    var botaoConhecimentos = document.getElementById('botaoConhecimentos');
+    (dados.topo && dados.topo.sumario || []).forEach(function(item){
+      var botao = el('button', 'papel-tira', item.texto);
+      botao.type = 'button';
+      botao.addEventListener('click', function(){
+        var destino = document.getElementById(item.destino);
+        if(destino) destino.scrollIntoView();
+      });
+      sumario.insertBefore(botao, botaoConhecimentos);
+    });
+    botaoConhecimentos.textContent = (dados.topo && dados.topo.botaoConhecimentos) || 'conhecimentos ↗';
+
+    document.getElementById('sobreTitulo').textContent = (dados.sobre && dados.sobre.titulo) || '';
+    var sobreParagrafos = document.getElementById('sobreParagrafos');
+    (dados.sobre && dados.sobre.paragrafos || []).forEach(function(texto){
+      sobreParagrafos.appendChild(el('p', null, texto));
+    });
+
+    document.getElementById('fraseImpacto1').textContent = dados.fraseImpacto1 || '';
+    document.getElementById('fraseImpacto2').textContent = dados.fraseImpacto2 || '';
+
+    document.getElementById('cadernoTitulo').textContent = (dados.caderno && dados.caderno.titulo) || '';
+    document.getElementById('instrucaoCaderno').textContent = (dados.caderno && dados.caderno.instrucao) || '';
+    montarCaderno((dados.caderno && dados.caderno.atividades) || []);
+
+    montarRodape(dados.contato || {});
+    montarConhecimentos(dados.conhecimentos || {});
+    ligarModoConhecimentos(nomeOriginal, (dados.marca && dados.marca.textoModoConhecimentos) || 'conhecimentos');
+
+    document.getElementById('carregandoTela').hidden = true;
+    document.getElementById('app').hidden = false;
+  }
+
+  /* ---------- Caderno: uma página direita por vez ---------- */
+  function montarCaderno(atividades){
+    var container = document.getElementById('cadernoPagina');
+    var marcadoresPagina = document.getElementById('marcadoresPagina');
+    var paginaAnterior = document.getElementById('paginaAnterior');
+    var proximaPagina = document.getElementById('proximaPagina');
+    var caderno = document.getElementById('caderno');
+    var total = atividades.length;
+    var paginaAtual = 0;
+
+    atividades.forEach(function(atividade, indice){
+      var artigo = el('article', 'pagina-atividade' + (indice === 0 ? ' ativa' : ''));
+
+      var cabecalho = el('div', 'pagina-cabecalho');
+      cabecalho.appendChild(el('span', 'pagina-etiqueta', 'atividade ' + String(indice + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0')));
+      cabecalho.appendChild(el('span', null, 'registro de aprendizagem'));
+      artigo.appendChild(cabecalho);
+
+      artigo.appendChild(el('h3', null, atividade.titulo || ''));
+
+      var blocoResumo = el('div', 'pagina-bloco');
+      blocoResumo.appendChild(el('h4', null, 'Resumo da atividade'));
+      blocoResumo.appendChild(el('p', null, atividade.resumo || ''));
+      artigo.appendChild(blocoResumo);
+
+      var blocoAprendizado = el('div', 'pagina-bloco');
+      blocoAprendizado.appendChild(el('h4', null, 'O que aprendi'));
+      blocoAprendizado.appendChild(el('p', null, atividade.aprendizado || ''));
+      artigo.appendChild(blocoAprendizado);
+
+      var link = el('a', 'pagina-link' + (atividade.disponivel ? '' : ' indisponivel'), (atividade.linkTexto || 'Não disponível') + (atividade.disponivel ? '' : ''));
+      link.textContent = '↗ ' + (atividade.linkTexto || 'Não disponível');
+      if(atividade.disponivel && atividade.linkHref){
+        link.href = atividade.linkHref;
+        link.target = '_blank';
+        link.rel = 'noopener';
+      } else {
+        link.href = '#';
+        link.setAttribute('aria-disabled', 'true');
+        link.addEventListener('click', function(e){ e.preventDefault(); });
+      }
+      artigo.appendChild(link);
+
+      container.appendChild(artigo);
+
+      var marcador = el('button', 'marcador-pagina' + (indice === 0 ? ' ativo' : ''), String(indice + 1));
+      marcador.type = 'button';
+      marcador.setAttribute('aria-label', 'Abrir atividade ' + (indice + 1));
+      marcador.setAttribute('aria-pressed', indice === 0 ? 'true' : 'false');
+      marcador.addEventListener('click', function(){ mostrarPagina(indice); });
+      marcadoresPagina.appendChild(marcador);
+    });
+
+    var paginas = Array.prototype.slice.call(container.querySelectorAll('.pagina-atividade'));
+
+    function mostrarPagina(indice){
+      paginaAtual = Math.max(0, Math.min(indice, paginas.length - 1));
+      paginas.forEach(function(pagina, item){
+        pagina.classList.toggle('ativa', item === paginaAtual);
+      });
+      var marcadores = marcadoresPagina.querySelectorAll('.marcador-pagina');
+      marcadores.forEach(function(marcador, item){
+        var ativo = item === paginaAtual;
+        marcador.classList.toggle('ativo', ativo);
+        marcador.setAttribute('aria-pressed', ativo ? 'true' : 'false');
+      });
+      paginaAnterior.disabled = paginaAtual === 0;
+      proximaPagina.disabled = paginaAtual === paginas.length - 1;
+    }
+
+    paginaAnterior.addEventListener('click', function(){ mostrarPagina(paginaAtual - 1); });
+    proximaPagina.addEventListener('click', function(){ mostrarPagina(paginaAtual + 1); });
+    caderno.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowLeft') mostrarPagina(paginaAtual - 1);
+      if(e.key === 'ArrowRight') mostrarPagina(paginaAtual + 1);
+    });
+    mostrarPagina(0);
+  }
+
+  /* ---------- Rodapé / contato ---------- */
+  function montarRodape(contato){
+    var cena = document.getElementById('cenaRodape');
+
+    if(contato.githubUrl){
+      var linkGithub = el('a', 'botao-contato');
+      linkGithub.href = contato.githubUrl;
+      linkGithub.target = '_blank';
+      linkGithub.rel = 'noopener';
+      linkGithub.setAttribute('aria-label', 'Abrir o GitHub');
+      linkGithub.innerHTML = ICONE_GITHUB;
+      linkGithub.appendChild(document.createTextNode(' ' + (contato.githubTexto || 'GitHub')));
+      cena.appendChild(linkGithub);
+    }
+
+    if(contato.email){
+      var botaoEmail = el('button', 'botao-contato');
+      botaoEmail.type = 'button';
+      var arroba = el('span', 'email-arroba', '@');
+      arroba.setAttribute('aria-hidden', 'true');
+      botaoEmail.appendChild(arroba);
+      botaoEmail.appendChild(document.createTextNode(' ' + (contato.emailBotaoTexto || 'Copiar e-mail')));
+      cena.appendChild(botaoEmail);
+
+      var toastCopiado = document.getElementById('toastCopiado');
+      var toastTimer = null;
+      function mostrarToast(mensagem){
+        toastCopiado.textContent = mensagem;
+        toastCopiado.classList.add('ativo');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function(){ toastCopiado.classList.remove('ativo'); }, 2600);
+      }
+      function copiarEmailFallback(){
+        var campo = document.createElement('textarea');
+        campo.value = contato.email;
+        campo.style.position = 'fixed';
+        campo.style.opacity = '0';
+        document.body.appendChild(campo);
+        campo.select();
+        try{
+          document.execCommand('copy');
+          mostrarToast('E-mail copiado: ' + contato.email);
+        }catch(err){
+          mostrarToast('Não foi possível copiar. E-mail: ' + contato.email);
+        }
+        document.body.removeChild(campo);
+      }
+      botaoEmail.addEventListener('click', function(){
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(contato.email).then(function(){
+            mostrarToast('E-mail copiado: ' + contato.email);
+          }).catch(copiarEmailFallback);
+        } else {
+          copiarEmailFallback();
+        }
+      });
+    }
+
+    var fallback = document.getElementById('rodapeFallback');
+    fallback.textContent = '';
+    fallback.appendChild(document.createTextNode((contato.fallbackPrefixo || 'Prefere direto?') + ' '));
+    if(contato.email){
+      var linkEmail = el('a', null, contato.email);
+      linkEmail.href = 'mailto:' + contato.email;
+      fallback.appendChild(linkEmail);
+    }
+    if(contato.githubUrl){
+      fallback.appendChild(document.createTextNode(' · '));
+      var linkGh = el('a', null, contato.githubUrl.replace(/^https?:\/\//, ''));
+      linkGh.href = contato.githubUrl;
+      linkGh.target = '_blank';
+      linkGh.rel = 'noopener';
+      fallback.appendChild(linkGh);
+    }
+  }
+
+  /* ---------- Conhecimentos ---------- */
+  function montarConhecimentos(conhecimentos){
+    document.getElementById('conhecimentosStatus').textContent = conhecimentos.status || '';
+    document.getElementById('conhecimentosTitulo').textContent = conhecimentos.titulo || '';
+    document.getElementById('conhecimentosIntro').textContent = conhecimentos.intro || '';
+
+    var caminho = document.getElementById('conhecimentosCaminho');
+    (conhecimentos.caminho || []).forEach(function(texto){
+      caminho.appendChild(el('span', null, texto));
+    });
+
+    document.getElementById('notaTitulo').textContent = conhecimentos.notaTitulo || '';
+    document.getElementById('notaTexto').textContent = conhecimentos.notaTexto || '';
+
+    var lista = document.getElementById('listaConhecimentos');
+    (conhecimentos.itens || []).forEach(function(item){
+      var li = document.createElement('li');
+      li.style.setProperty('--nivel', (item.nivel != null ? item.nivel : 20) + '%');
+
+      var icone = el('span', 'icone-conhecimento');
+      icone.innerHTML = ICONES[item.icone] || ICONES.padrao;
+      li.appendChild(icone);
+
+      var coluna = document.createElement('span');
+      coluna.appendChild(el('strong', 'nome-conhecimento', item.nome || ''));
+      coluna.appendChild(el('span', 'status-conhecimento', item.status || ''));
+      coluna.appendChild(el('p', 'descricao-conhecimento', item.descricao || ''));
+
+      var barra = el('span', 'barra-nivel');
+      barra.setAttribute('aria-label', 'Contato inicial com ' + (item.nome || ''));
+      var barraPreenchida = el('span', 'barra-preenchida');
+      barra.appendChild(barraPreenchida);
+      coluna.appendChild(barra);
+
+      var legenda = el('span', 'legenda-nivel');
+      legenda.appendChild(el('span', null, 'contato até aqui'));
+      legenda.appendChild(el('span', null, (item.nivel != null ? item.nivel : 20) + '%'));
+      coluna.appendChild(legenda);
+
+      li.appendChild(coluna);
+      lista.appendChild(li);
+    });
+
+    document.getElementById('proximoPassoTitulo').textContent = conhecimentos.proximoPassoTitulo || '';
+    document.getElementById('proximoPassoTexto').textContent = conhecimentos.proximoPassoTexto || '';
+  }
+
+  /* ---------- Modo "conhecimentos" (troca de tela) ---------- */
+  function ligarModoConhecimentos(nomeOriginal, textoModoConhecimentos){
+    var marca = document.getElementById('marcaTopo');
+    var nomeTexto = document.getElementById('nomeTextoTopo');
+    var conteudoPrincipal = document.getElementById('conteudoPrincipal');
+    var rodape = document.querySelector('footer');
+    var secaoConhecimentos = document.getElementById('conhecimentos');
+    var botaoConhecimentos = document.getElementById('botaoConhecimentos');
+    var modoAtivo = false;
+    var apagandoTexto = null;
+    var escrevendoTexto = null;
+
+    function trocarTexto(textoFinal, callback){
+      clearInterval(apagandoTexto);
+      clearInterval(escrevendoTexto);
+      var atual = nomeTexto.textContent;
+      var i = atual.length;
+      apagandoTexto = setInterval(function(){
+        if(i <= 0){
+          clearInterval(apagandoTexto);
+          var j = 0;
+          escrevendoTexto = setInterval(function(){
+            if(j > textoFinal.length){
+              clearInterval(escrevendoTexto);
+              if(callback) callback();
+              return;
+            }
+            nomeTexto.textContent = textoFinal.slice(0, j);
+            j++;
+          }, 65);
+          return;
+        }
+        nomeTexto.textContent = atual.slice(0, i-1);
+        i--;
+      }, 40);
+    }
+
+    function alternarConhecimentos(){
+      modoAtivo = !modoAtivo;
+      marca.setAttribute('aria-label', modoAtivo ? 'Voltar para a página inicial' : 'Mostrar meus conhecimentos');
+      botaoConhecimentos.setAttribute('aria-expanded', modoAtivo ? 'true' : 'false');
+
+      if(modoAtivo){
+        document.body.classList.add('modo-conhecimentos');
+        trocarTexto(textoModoConhecimentos);
+        secaoConhecimentos.classList.add('visivel');
+        window.requestAnimationFrame(function(){
+          window.requestAnimationFrame(function(){
+            secaoConhecimentos.classList.add('mostrar');
+          });
+        });
+        setTimeout(function(){
+          conteudoPrincipal.classList.add('oculto');
+          rodape.classList.add('oculto');
+        }, 420);
+      } else {
+        conteudoPrincipal.classList.remove('oculto');
+        rodape.classList.remove('oculto');
+        secaoConhecimentos.classList.remove('mostrar');
+        trocarTexto(nomeOriginal);
+        void conteudoPrincipal.offsetWidth;
+        document.body.classList.remove('modo-conhecimentos');
+        setTimeout(function(){
+          secaoConhecimentos.classList.remove('visivel');
+        }, 500);
+      }
+    }
+
+    marca.addEventListener('click', alternarConhecimentos);
+    botaoConhecimentos.addEventListener('click', alternarConhecimentos);
+  }
+})();
+  </script>
+
+  <!-- Processa o convite/login do Netlify Identity quando o retorno cai na página inicial. -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function (user) {
+        if (window.location.hash.includes("confirmation_token") || window.location.hash.includes("invite_token")) {
+          window.netlifyIdentity.open();
+        }
+        if (user && window.location.hash === "#/") {
+          window.location.replace("/admin/#/");
+        }
+      });
+    }
+  </script>
+  
+</body>
+</html>

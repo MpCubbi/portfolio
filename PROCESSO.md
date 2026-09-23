@@ -578,9 +578,9 @@ Se a pasta admin não existir no GitHub, crie-a em Add file → Create new file,
 
 Aguarde também alguns minutos após o commit, pois o Netlify precisa concluir o deploy. Se ainda aparecer 404, no Netlify abra Deploys, confirme que o último deploy terminou com sucesso e verifique em Deploy settings → Build & deploy se o diretório de publicação é . (raiz). A descrição da imagem é: tela do Decap CMS informando Failed to load config.yml (404), indicando que o painel existe, mas o arquivo de configuração não está no caminho esperado.
 
-Mateus: -A  pasta admin foi criada e dentro dela config.yml e deu esse erro, config.yml não está na raíz
+**Mateus**: -A  pasta admin foi criada e dentro dela config.yml e deu esse erro, config.yml não está na raíz
 
-V0: -A pasta admin está no lugar correto. No Decap CMS, o arquivo precisa estar exatamente assim no repositório e no site publicado:
+**V0**: -A pasta admin está no lugar correto. No Decap CMS, o arquivo precisa estar exatamente assim no repositório e no site publicado:
 
 /admin/index.html
 /admin/config.yml
@@ -608,29 +608,47 @@ Também confirme que o arquivo no GitHub se chama exatamente config.yml, com let
 -Fiz a identidade do projeto e convidei meu email. Habilitei o git gateway
 -Quando aceito o pedido no meu email aparece essa tela que mandei imagem, do erro no CMS configuration. Aí não consigo fazer o login no decap pq o email não aceitou corretamente o convite
 
-**V0**: -Entendi. O Identity e o Git Gateway parecem estar configurados; o erro acontece antes do login: o Decap abre /admin/, mas não encontra config.yml no endereço esperado.
+**V0**: -Pelo que descreveu, o problema não é a localização do arquivo. Como /admin/ abre e o erro aparece somente ao aceitar o convite, o mais provável é que o link do convite esteja levando a uma sessão/URL antiga do Netlify Identity, ou que o convite esteja associado ao projeto/site Netlify anterior, não ao deploy atual.
 
-Faça assim, sem criar outro projeto:
+Faça este teste específico:
 
-No GitHub, abra exatamente o repositório conectado ao site portfoliomateusp.netlify.app.
-Confirme que existe esta estrutura na raiz:
-index.html — site público
-admin/index.html — painel do Decap
-admin/config.yml — configuração do painel
-content/site.json
-netlify.toml
-O arquivo deve estar em admin/config.yml, não apenas em config.yml na raiz. No GitHub, abra o arquivo e confira o caminho exibido como seu-repositorio / admin / config.yml.
-Se estiver apenas na raiz, abra config.yml, clique no lápis, use Move/rename e altere o nome para admin/config.yml. Salve com Commit changes.
-No Netlify, entre em Deploys e aguarde o novo deploy iniciado pelo commit. Se não iniciar, use Trigger deploy > Deploy site.
-Depois que o deploy terminar, teste diretamente no navegador: https://portfoliomateusp.netlify.app/admin/config.yml Deve aparecer o texto YAML. Se aparecer 404, o arquivo ainda não está no deploy correto ou o Netlify está conectado a outro repositório/branch.
-Só depois teste: https://portfoliomateusp.netlify.app/admin/ Faça uma recarga completa com Ctrl+F5.
-Também confira no Netlify em Project configuration > Build & deploy > Continuous deployment:
+Abra uma janela anônima.
+Acesse diretamente https://portfoliomateusp.netlify.app/admin/.
+Não use o link antigo do e-mail. Na tela do Decap, clique no ícone de usuário e escolha Login.
+Se o convite já foi aceito, use o mesmo e-mail e a senha criada no Identity.
+Se não funcionar, no Netlify vá em Project configuration → Identity → Users e verifique se seu e-mail aparece como usuário confirmado.
+Se aparecer como convidado ou pendente, exclua somente esse convite pendente e envie um novo convite a partir deste projeto Netlify atual.
+Se o erro continuar, preciso de uma informação diferente da estrutura dos arquivos: abra diretamente https://portfoliomateusp.netlify.app/admin/config.yml e me diga se aparece o YAML ou uma página 404. Se o YAML aparece, então o arquivo está correto e vamos investigar a configuração do Identity/Git Gateway e o convite — não o caminho do arquivo.
 
-repositório correto;
-branch correta, normalmente main;
-Publish directory vazio ou .;
-nenhum Base directory apontando para uma subpasta.
-Importante: não coloque config.yml dentro de admin/index.html, não renomeie para config.yaml e verifique letras maiúsculas/minúsculas. O caminho precisa ser exatamente admin/config.yml.
+**Mateus**: -Eu mando o convite, aceito, ele me direciona para portfoliomateusp.netlify.app/#/ (que está dando o erro), não conigo fazer o login, aparece "Failed to load settings from /.netfily/identiy"
 
-O fato de /admin/ abrir, mas /admin/config.yml dar 404, confirma que o problema é de arquivo ausente no deploy, caminho incorreto ou deploy feito a partir de outro repositório/branch — não é um problema do convite do Identity. Depois que a URL do config.yml funcionar, o convite e o login poderão continuar normalmente.
+**V0**:Entendi: o problema acontece depois que o convite é aceito. O Netlify redireciona para /#/, mas a página inicial não estava carregando o widget do Netlify Identity para processar o token do convite. Corrigi o index.html para carregar esse widget, reconhecer confirmation_token/invite_token e encaminhar usuários autenticados para /admin/#/.
 
+Agora faça exatamente isto:
+
+Baixe a versão atualizada do projeto pelo Preview, ou envie o index.html atualizado ao GitHub.
+No Netlify, aguarde o novo deploy terminar.
+Abra uma janela anônima e acesse https://portfoliomateusp.netlify.app/admin/.
+Tente aceitar o convite novamente. Se o convite antigo continuar falhando, exclua-o no Netlify Identity e envie um novo.
+Depois de aceitar, o endereço pode passar brevemente por /#/, mas deverá abrir o painel em /admin/#/.
+Importante: o endereço correto do serviço é /.netlify/identity — com “netlify” e “identity” escritos exatamente assim. Se a mensagem real no navegador estiver mostrando /.netfily/identiy, há algum erro de digitação ou configuração no deploy, porque esse caminho não existe. O config.yml deve continuar dentro de admin/; ele não deve ser movido para a raiz.
+
+Se ainda aparecer o erro, verifique no Netlify, em Identity, se o site correto está aberto e se Identity e Git Gateway estão habilitados. Essa correção foi feita no código, mas ela só terá efeito no endereço público depois de um novo deploy.
+
+**Mateus**: -Baixei o novo index.html, devo colocá-lo no lugar do index.html antigo em admin? ou no lugar do index.html da raíz?
+
+**V0**:Coloque o novo index.html no lugar do index.html da raiz do projeto — o arquivo que aparece junto de netlify.toml, package.json e da pasta admin.
+
+Não substitua admin/index.html. Esse arquivo é o carregador do Decap CMS e deve permanecer dentro da pasta admin/.
+
+A estrutura correta fica assim:
+
+projeto/
+├── index.html              ← substitua este
+├── netlify.toml
+├── package.json
+├── site.json
+└── admin/
+    ├── index.html          ← não substitua
+    └── config.yml
+Depois, envie o index.html atualizado ao GitHub ou faça um novo deploy no Netlify. Aguarde o deploy terminar e teste novamente em https://portfoliomateusp.netlify.app/admin/.

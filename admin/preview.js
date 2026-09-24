@@ -1,5 +1,7 @@
 (function () {
-  const h = window.h;
+  // O Decap CMS disponibiliza o React globalmente no iframe da prévia.
+  // `window.h` não existe no carregamento normal e fazia o CMS ignorar este template.
+  const h = window.React.createElement;
 
   function value(entry, path, fallback) {
     const result = entry.getIn(['data', ...path]);

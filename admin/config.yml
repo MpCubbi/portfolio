@@ -2,6 +2,9 @@ backend:
   name: git-gateway
   branch: main
 
+site_url: "https://portfoliomateusp.netlify.app"
+display_url: "https://portfoliomateusp.netlify.app"
+
 # Exigido pelo Decap mesmo sem uploads de imagem neste site.
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"

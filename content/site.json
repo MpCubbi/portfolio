@@ -72,6 +72,14 @@
         "linkTexto": "Não disponível",
         "linkHref": "",
         "disponivel": false
+      },
+      {
+        "linkTexto": "Não disponível",
+        "disponivel": false,
+        "linkHref": "",
+        "titulo": "Teste",
+        "resumo": "Essa atividade é um teste de alteração com preview no modo admin",
+        "aprendizado": "teste"
       }
     ]
   },

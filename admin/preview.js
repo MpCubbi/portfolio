@@ -78,7 +78,9 @@
     );
   }
 
-  CMS.registerPreviewTemplate('site', SitePreview);
+  // Coleção "site" é do tipo `files` (não `folder`): o Decap exige o nome do
+  // arquivo dentro de `files` ("conteudo"), não o nome da coleção ("site").
+  CMS.registerPreviewTemplate('conteudo', SitePreview);
 })();
 
 /* O Decap carrega este arquivo automaticamente por estar em /admin/preview.js. */

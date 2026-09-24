@@ -72,14 +72,6 @@
         "linkTexto": "Não disponível",
         "linkHref": "",
         "disponivel": false
-      },
-      {
-        "linkTexto": "Não disponível",
-        "disponivel": false,
-        "linkHref": "",
-        "titulo": "teste",
-        "resumo": "teste",
-        "aprendizado": "."
       }
     ]
   },

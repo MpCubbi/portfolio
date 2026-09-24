@@ -34,7 +34,7 @@ Precisa funcionar bem no celular e ter bom contraste para leitura.
 -Utilize a fonte "Terminal F4" do DaFont: https://www.dafont.com/pt/terminal-f4.font, para todos os textos incluindo topo e rodapé. 
 
 ## O que a IA devolveu
-A Inteligência Artificial (até o momento o Claude.AI) entregou uma landing page semelhante ao que o usuário imaginava
+A Inteligência Artificial (até o momento o Claude.AI) entregou uma landing page pouco semelhante ao que o usuário imaginava, pois não foi capaz de utilizar a paleta de cores pedida pelo usuário e a fonte pedida pelo usuário, que foi substituída por uma fonte pouco semelhante. O efeito de sobrassalência ao passar com o mouse por cima do card foi bem executado, porém era notável o AI Slop. 
 
 ## O que eu mudei e por quê
 Alterações:

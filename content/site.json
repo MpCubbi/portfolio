@@ -6,9 +6,18 @@
   "topo": {
     "frase": "Curiosidade que vira código, atenção que vira proteção.",
     "sumario": [
-      { "texto": "sobre mim", "destino": "sobre" },
-      { "texto": "meu caderno", "destino": "entregas" },
-      { "texto": "contato", "destino": "contato" }
+      {
+        "texto": "sobre mim",
+        "destino": "sobre"
+      },
+      {
+        "texto": "meu caderno",
+        "destino": "entregas"
+      },
+      {
+        "texto": "contato",
+        "destino": "contato"
+      }
     ],
     "botaoConhecimentos": "conhecimentos ↗"
   },
@@ -75,21 +84,68 @@
     "fallbackPrefixo": "Prefere direto?"
   },
   "conhecimentos": {
-    "status": "diário de aprendizagem / 01",
-    "titulo": "Conhecimentos em construção",
-    "intro": "Estou no primeiro ano do curso técnico em Informática para a Internet. Esta página registra os primeiros contatos com ferramentas e ambientes que estou começando a entender — não é uma lista de domínio.",
-    "caminho": ["1º ano técnico", "fundamentos", "aprendendo na prática"],
+    "proximoPassoTexto": "Fortalecer os fundamentos, praticar em projetos pequenos e registrar as dúvidas que aparecerem pelo caminho.",
     "notaTitulo": "Como ler",
+    "intro": "Estou no primeiro ano do curso técnico em Informática para a Internet. Esta página registra os primeiros contatos com ferramentas e ambientes que estou começando a entender — não é uma lista de domínio.",
+    "status": "diário de aprendizagem / 01",
     "notaTexto": "As barras mostram o quanto já explorei cada ferramenta até agora. Elas representam contato e prática inicial, não uma nota nem um nível profissional.",
-    "itens": [
-      { "icone": "excel", "nome": "Excel", "status": "primeiro contato", "descricao": "Organização de dados, tabelas e fórmulas simples.", "nivel": 24 },
-      { "icone": "powerpoint", "nome": "PowerPoint", "status": "primeiro contato", "descricao": "Estruturação de apresentações e comunicação visual.", "nivel": 24 },
-      { "icone": "canva", "nome": "Canva", "status": "explorando", "descricao": "Composição visual, modelos e organização de elementos.", "nivel": 26 },
-      { "icone": "word", "nome": "Word", "status": "primeiro contato", "descricao": "Formatação de textos e preparação de documentos.", "nivel": 22 },
-      { "icone": "vscode", "nome": "VS Code", "status": "começando", "descricao": "Editor onde pratico e organizo meus primeiros arquivos de código.", "nivel": 28 },
-      { "icone": "vm", "nome": "Máquina Virtual", "status": "conhecendo", "descricao": "Ambiente isolado para observar sistemas e estudar com segurança.", "nivel": 20 }
-    ],
     "proximoPassoTitulo": "próximo passo",
-    "proximoPassoTexto": "Fortalecer os fundamentos, praticar em projetos pequenos e registrar as dúvidas que aparecerem pelo caminho."
+    "titulo": "Conhecimentos em construção",
+    "caminho": [
+      "1º ano técnico",
+      "fundamentos",
+      "aprendendo na prática"
+    ],
+    "itens": [
+      {
+        "icone": "excel",
+        "nome": "Excel",
+        "status": "primeiro contato",
+        "descricao": "Organização de dados, tabelas e fórmulas simples.",
+        "nivel": 24
+      },
+      {
+        "icone": "powerpoint",
+        "nome": "PowerPoint",
+        "status": "primeiro contato",
+        "descricao": "Estruturação de apresentações e comunicação visual.",
+        "nivel": 24
+      },
+      {
+        "icone": "canva",
+        "nome": "Canva",
+        "status": "explorando",
+        "descricao": "Composição visual, modelos e organização de elementos.",
+        "nivel": 26
+      },
+      {
+        "icone": "word",
+        "nome": "Word",
+        "status": "primeiro contato",
+        "descricao": "Formatação de textos e preparação de documentos.",
+        "nivel": 22
+      },
+      {
+        "icone": "vscode",
+        "nome": "VS Code",
+        "status": "começando",
+        "descricao": "Editor onde pratico e organizo meus primeiros arquivos de código.",
+        "nivel": 28
+      },
+      {
+        "icone": "vm",
+        "nome": "Máquina Virtual",
+        "status": "conhecendo",
+        "descricao": "Ambiente isolado para observar sistemas e estudar com segurança.",
+        "nivel": 20
+      },
+      {
+        "icone": "padrao",
+        "nivel": 15,
+        "nome": "Vibe Coding",
+        "status": "Começando",
+        "descricao": "Transcrevendo minhas ideias em códigos com a Inteligência Artificial"
+      }
+    ]
   }
 }

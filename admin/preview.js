@@ -1,7 +1,9 @@
 (function () {
-  // O Decap CMS disponibiliza o React globalmente no iframe da prévia.
-  // `window.h` não existe no carregamento normal e fazia o CMS ignorar este template.
-  const h = window.React.createElement;
+  // O decap-cms.js (carregado via <script> no admin/index.html) expõe as globais
+  // `h` (equivalente a React.createElement) e `createClass` (React.createClass).
+  // NÃO existe `window.React` nesse carregamento — usar window.React.createElement
+  // falha silenciosamente e o Decap volta para a prévia de texto padrão.
+  const h = window.h;
 
   function value(entry, path, fallback) {
     const result = entry.getIn(['data', ...path]);

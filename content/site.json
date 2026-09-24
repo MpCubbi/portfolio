@@ -37,9 +37,9 @@
         "titulo": "Capa do Meu Álbum",
         "resumo": "Transformei minha identidade pessoal em uma composição visual, contando uma história em uma única imagem.",
         "aprendizado": "Aprendi a tomar decisões de cor, imagem e hierarquia para comunicar uma ideia de forma visual e intencional.",
-        "linkTexto": "Não disponível",
-        "linkHref": "",
-        "disponivel": false
+        "linkTexto": "Disponível",
+        "linkHref": "assets/uploads/capa-album-senai.png",
+        "disponivel": true
       },
       {
         "titulo": "Dashboard Quem Sou Eu",
